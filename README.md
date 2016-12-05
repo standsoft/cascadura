@@ -1,2 +1,4 @@
 # cascadura
-Casca Dura Framework
+CascaDura Framework
+
+Java Enterprise Business Framework
