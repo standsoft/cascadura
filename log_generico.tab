@@ -1,0 +1,35 @@
+create table LOG_GENERICO
+(
+  seq                    NUMBER not null,
+  dt_addrow              DATE default SYSDATE not null,
+  processo               VARCHAR2(100) not null,
+  msg                    VARCHAR2(4000) not null,
+  usuario                VARCHAR2(1000) not null,
+  programa               VARCHAR2(1000) not null,
+  chave                  VARCHAR2(1000),
+  dt_last_msg            DATE,
+  contador               NUMBER default 1 not null,
+  msg_anterior           VARCHAR2(4000),
+  id_envia_email         VARCHAR2(1) default 'N' not null,
+  id_envia_email_enviado VARCHAR2(1) default 'N' not null,
+  osuser                 VARCHAR2(30),
+  machine                VARCHAR2(64),
+  client_info            VARCHAR2(64),
+  program                VARCHAR2(48),
+  terminal               VARCHAR2(30),
+  audsid                 NUMBER
+)
+nologging;
+create index IDX_LOGGENERICO_01 on LOG_GENERICO (PROCESSO)
+  nologging;
+create index IDX_LOGGENERICO_02 on LOG_GENERICO (DT_ADDROW)
+  nologging;
+create index IDX_LOGGENERICO_03 on LOG_GENERICO (PROGRAMA)
+  nologging;
+create index IDX_LOGGENERICO_04 on LOG_GENERICO (SEQ)
+  nologging;
+create unique index IDX_LOGGENERICO_UK_01 on LOG_GENERICO (PROCESSO, PROGRAMA, CHAVE)
+  nologging;
+alter table LOG_GENERICO
+  add constraint IDX_LOGGENERICO_PK primary key (SEQ);
+

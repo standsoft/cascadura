@@ -1,0 +1,18 @@
+create table TIPO_ERRO
+(
+  tipoerro_id NUMBER(10) not null,
+  cd          VARCHAR2(100) not null,
+  descr       VARCHAR2(4000) not null,
+  mensagem    VARCHAR2(4000),
+  pattern     VARCHAR2(1000) default '%PROCESSO%:%LINHA%->%FASE%(%CD_ERRO%) - %msg_erro%' not null,
+  gera_log    VARCHAR2(1) default 'N' not null,
+  gera_email  VARCHAR2(1) default 'N' not null,
+  sqlcodex    NUMBER default -20001 not null,
+  dm_level    NUMBER(1) default 2 not null
+)
+nologging;
+create unique index IDX_TIPOERRO_PK on TIPO_ERRO (TIPOERRO_ID)
+  nologging;
+create unique index IDX_TIPOERRO_UK_01 on TIPO_ERRO (CD)
+  nologging;
+

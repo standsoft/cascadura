@@ -1,0 +1,22 @@
+create table EMAIL
+(
+  seq          NUMBER,
+  num_max_tent NUMBER(4),
+  interv_tent  NUMBER,
+  dt_ult_tent  DATE,
+  num_tent     NUMBER,
+  prioridade   NUMBER,
+  msg_ult_tent VARCHAR2(4000),
+  remet        VARCHAR2(255),
+  dest         VARCHAR2(255),
+  subj_m       VARCHAR2(255),
+  body_m       VARCHAR2(4000),
+  dt_addrow    DATE,
+  id_enviado   VARCHAR2(1),
+  dt_enviado   DATE,
+  seq_log      NUMBER
+)
+nologging;
+comment on column EMAIL.seq_log
+  is 'Identifica qual foi a sequência do log que gerou o email.';
+

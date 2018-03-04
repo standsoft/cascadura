@@ -1,0 +1,23 @@
+create global temporary table LOG_TEMPORARY
+(
+  seq                    NUMBER not null,
+  dt_addrow              DATE not null,
+  processo               VARCHAR2(100),
+  msg                    VARCHAR2(4000) not null,
+  usuario                VARCHAR2(1000),
+  programa               VARCHAR2(1000),
+  chave                  VARCHAR2(1000),
+  dt_last_msg            DATE,
+  contador               NUMBER,
+  msg_anterior           VARCHAR2(4000),
+  id_envia_email         VARCHAR2(1),
+  id_envia_email_enviado VARCHAR2(1),
+  osuser                 VARCHAR2(30),
+  machine                VARCHAR2(64),
+  client_info            VARCHAR2(64),
+  program                VARCHAR2(48),
+  terminal               VARCHAR2(30),
+  audsid                 NUMBER
+)
+on commit delete rows;
+
